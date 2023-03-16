@@ -48,7 +48,6 @@ export const map: MapFunc = (parser, convertFn) => {
     if(res.result === "fail"){
       return res
     }
-    // const converted = convertFn(res.data)
     return {
       result: "success",
       data: convertFn(res.data),
