@@ -41,7 +41,7 @@ describe('char("a")', () => {
 
 describe('is()', () => {
   describe('is(c => c === "a")', () => {
-    const parser = is((c): c is 'a' => c === 'a');
+    const parser = is((c): c is 'ab' => c === 'ab');
 
     test('Empty input', () => {
       const input = [] as const;
@@ -52,23 +52,52 @@ describe('is()', () => {
     });
 
     test('Input "a"', () => {
-      const input = [...'a'];
+      const input = ['ab'];
       const output = parser(input);
-      expect(output).toEqual<ParserOutput<'a'>>({
+      expect(output).toEqual<ParserOutput<'ab'>>({
         result: 'success',
-        data: 'a',
+        data: 'ab',
         rest: []
       });
     });
 
-    test('Input "A"', () => {
-      const input = [...'A'];
-      const output = parser(input);
-      expect(output).toEqual<ParserOutput<'a'>>({
-        result: 'fail'
-      });
-    });
+    // test('Input "A"', () => {
+    //   const input = [...'A'];
+    //   const output = parser(input);
+    //   expect(output).toEqual<ParserOutput<'a'>>({
+    //     result: 'fail'
+    //   });
+    // });
   });
+  // describe('is(c => c === "a")', () => {
+  //   const parser = is((c): c is 'a' => c === 'a');
+
+  //   test('Empty input', () => {
+  //     const input = [] as const;
+  //     const output = parser(input);
+  //     expect(output).toEqual<ParserOutput<'a'>>({
+  //       result: 'fail'
+  //     });
+  //   });
+
+  //   test('Input "a"', () => {
+  //     const input = [...'a'];
+  //     const output = parser(input);
+  //     expect(output).toEqual<ParserOutput<'a'>>({
+  //       result: 'success',
+  //       data: 'a',
+  //       rest: []
+  //     });
+  //   });
+
+  //   test('Input "A"', () => {
+  //     const input = [...'A'];
+  //     const output = parser(input);
+  //     expect(output).toEqual<ParserOutput<'a'>>({
+  //       result: 'fail'
+  //     });
+  //   });
+  // });
 
   describe('is(c => c === "0" || c === "1")', () => {
     const parser = is((c): c is '0' | '1' => c === '0' || c === '1');

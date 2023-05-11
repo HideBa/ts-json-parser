@@ -36,7 +36,7 @@ export const lowerAlpha: Parser<LowerAlphabet> = is((input): input is LowerAlpha
 
 export const alpha: Parser<Alphabet> = is((input): input is Alphabet => (/^[a-zA-Z]$/).test(input))
 
-export type Digit = "1"|"2"|"3"|"4"|"5"|"6"|"7"|"8"|"9"| "0"
+export type Digit = "1"|"2"|"3"|"4"|"5"|"6"|"7"|"8"|"9"|"0"
 
 export const digit: Parser<Digit> = is((input): input is Digit => (/^[0-9]$/).test(input))
 
